@@ -13,7 +13,8 @@ if (order[0] == 'beef' || order[0] == 'Beef'){
     total[0] = 5.25;
 } else if (order[0] == 'tofu' || order[0] == 'Tofu'){
     total[0] = 5.75;
-}
+}console.log("invalid choice");
+order[0] = readline.question(sandwich)
 console.log(order);
 drink = readline.question('would you like a drink? (yes/no): ');
 if (drink == "yes" || drink == "Yes"){
@@ -51,13 +52,35 @@ if (fries == "yes" || fries == "Yes"){
     }
 } else {
     total[2] = 0;
-}
-console.log(order);
-console.log(`total: $${total[0]+total[1]+total[2]}`);
+ sauces = readline.question('would you like a ketchup? (yes/no): ');
+    if (sauces == "yes" || sauces == "Yes"){
+        console.log('one ketchup packet costs $0.25');
+        total[3] = Number(readline.question('how many would you like: '))*.25;
+    } else {
+        total[3] = 0;
+    }
+    White = readline.question('would you like a Ranch? (yes/no): ');
+    if (White == "yes" || White == "Yes"){
+        console.log('one Ranch packet costs $0.10');
+        total[5] = Number(readline.question('how many would you like: '))*.25;
+    } else {
+        total[5] = 0;
+    }
+    brown = readline.question('would you like a Barbecue? (yes/no): ');
+    if (brown == "yes" || brown == "Yes"){
+        console.log('one Barbecue packet costs $0.50');
+        total[6] = Number(readline.question('how many would you like: '))*.25;
+    } else {
+        total[6] = 0;
+    }
 
-sauces = readline.question('would you like a ketchup? (yes/no): ');
-if (sauces == "yes" || sauces == "Yes")
-    console.log('one ketchup packet costs $0.25');
-total[3] = Number(readline.question('how many would you like: '))*.25;
-console.log(order);
-console.log(`total: $${total[0]+total[1]+total[2]+total[3]}`);
+    if (total[0] >= 1 && total[1] >= 1 && total[2] >= 1){
+        total[4] = -1;
+    } else {
+        total[4] = 0;
+    }
+    console.log(order);
+
+// next steps Daniel
+    total[7] = (((total[0]+total[1]+total[2]+total[3]+total[4])*.07)+(total[0]+total[1]+total[2]+total[3]+total[4])).toFixed(2);
+    console.log(`total: $${total[7]}`);
